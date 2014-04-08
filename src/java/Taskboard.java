@@ -17,4 +17,5 @@ public class Taskboard {
 	
 	public Map<Integer,String> myColumns = new HashMap<Integer,String>();
 	public Map<Integer,List<Task>> myTasksPerColumn = new HashMap<Integer,List<Task>>();
+	public String myName = "";
 }
