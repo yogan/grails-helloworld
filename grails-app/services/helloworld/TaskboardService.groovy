@@ -4,17 +4,7 @@ import grails.transaction.Transactional
 
 @Transactional
 class TaskboardService {
-	
-	def addTask(Taskboard aTaskBoard, Integer column, Task aTask) {
-		aTaskBoard.myTasksPerColumn.get(column).add(aTask);
-	}
-
-	def removeTask(Taskboard aTaskBoard, Task aTask) {
-		for (Map.Entry<Integer, List<Task>> entry : aTaskBoard.myTasksPerColumn.entrySet()) {
-			entry.value().remove(aTask);
-		}
-	}
-	
+		
     def randomBoard() {
 		if ( null == aRandomBoard ) {
 			initializeRandomBoard();
