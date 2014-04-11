@@ -28,11 +28,6 @@ class TaskboardService {
         aRandomBoard.myTasksPerColumn.put(1,new LinkedList<Task>());
         aRandomBoard.myColumns.put(2,"Done");
         aRandomBoard.myTasksPerColumn.put(2,new LinkedList<Task>());
-
-        //Task randomTask = new Task();
-        //randomTask.myName = "implement me";
-
-        //aRandomBoard.myTasksPerColumn.get(0).add(randomTask);
     }
 
     private Taskboard aRandomBoard;
