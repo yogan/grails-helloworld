@@ -20,8 +20,7 @@ class TaskboardService {
     }
 
     private void initializeRandomBoard() {
-        aRandomBoard = new Taskboard();
-        aRandomBoard.myName = "aRandomBoard";
+        aRandomBoard = new Taskboard("Random Things");
         aRandomBoard.myColumns.put(0,"To Do");
         aRandomBoard.myTasksPerColumn.put(0,new LinkedList<Task>());
         aRandomBoard.myColumns.put(1,"Doing");

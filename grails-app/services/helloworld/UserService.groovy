@@ -7,9 +7,7 @@ class UserService {
     def taskboardService
 
     def randomUser() {
-        User aRandomUser = new User();
-        aRandomUser.myName = "Axel";
-        aRandomUser.myLogin = "AKH";
+        User aRandomUser = new User("AKH", "Axel");
         aRandomUser.myTaskboards.add(taskboardService.randomBoard());
         return aRandomUser;
     }
