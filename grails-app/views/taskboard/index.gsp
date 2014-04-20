@@ -1,12 +1,10 @@
 <html>
     <body>
-    <% taskboard.myColumns.each { aColumn -> %>
-        <table style="float:left">
-            <tr><th><%="${aColumn.value}" %></th></tr>
-        <% taskboard.myTasksPerColumn[aColumn.key].each { aTask -> %>
-            <tr><td><%="${aTask.myName} [${aTask.id}] (${aTask.myOwner.myName})" %></td></tr>
+        <h1>Taskboards</h1>
+        <ul>
+        <% taskboard.each { board -> %>
+            <li><g:link action="show" id="${board.id}">${board.myName}</g:link></li>
         <%}%>
-         </table>
-   <%}%>
+        </ul>
    </body>
 </html>

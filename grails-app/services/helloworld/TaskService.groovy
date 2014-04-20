@@ -5,15 +5,16 @@ import grails.transaction.Transactional
 @Transactional
 class TaskService {
 
+    private List<Task> taskCache = new LinkedList<Task>()
+
     def list() {
-        List<Task> tasks = new LinkedList<Task>()
-        addRandomTasks(tasks)
-        return tasks
+        return taskCache
     }
 
-    def addRandomTasks(tasks) {
-        tasks.add(new Task("Dinge tun"))
-        tasks.add(new Task("Grails coden"))
-        tasks.add(new Task("dumm schauen"))
+    def createTask(String title, User owner) {
+        def task = new Task(title)
+        task.myOwner = owner
+        taskCache.add(task)
+        return task
     }
 }

@@ -5,29 +5,33 @@ import grails.transaction.Transactional
 @Transactional
 class TaskboardService {
 
+    private List<Taskboard> boardCache = new LinkedList<Taskboard>()
+
     def list() {
-        List<Taskboard> randomBoards = new LinkedList<Taskboard>();
-        Taskboard aBoard = randomBoard();
-        randomBoards.add(aBoard);
-        return randomBoards;
+        return boardCache
     }
 
-    def randomBoard() {
-        if ( null == aRandomBoard ) {
-            initializeRandomBoard();
+    def getBoard(String idstring) {
+        int id = Integer.parseInt(idstring)
+        for (def board : boardCache) {
+            if (board.id == id) {
+                return board
+            }
         }
-        return aRandomBoard;
+        return null // FIXME: OMG.
     }
 
-    private void initializeRandomBoard() {
-        aRandomBoard = new Taskboard("Random Things");
-        aRandomBoard.myColumns.put(0,"To Do");
-        aRandomBoard.myTasksPerColumn.put(0,new LinkedList<Task>());
-        aRandomBoard.myColumns.put(1,"Doing");
-        aRandomBoard.myTasksPerColumn.put(1,new LinkedList<Task>());
-        aRandomBoard.myColumns.put(2,"Done");
-        aRandomBoard.myTasksPerColumn.put(2,new LinkedList<Task>());
-    }
+    def createBoard(String name) {
+        def board = new Taskboard(name)
 
-    private Taskboard aRandomBoard;
+        board.myColumns.put(0,"To Do")
+        board.myTasksPerColumn.put(0,new LinkedList<Task>())
+        board.myColumns.put(1,"Doing")
+        board.myTasksPerColumn.put(1,new LinkedList<Task>())
+        board.myColumns.put(2,"Done")
+        board.myTasksPerColumn.put(2,new LinkedList<Task>())
+
+        boardCache.add(board)
+        return board
+    }
 }

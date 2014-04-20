@@ -6,15 +6,29 @@ import grails.transaction.Transactional
 class UserService {
     def taskboardService
 
-    def randomUser() {
-        User aRandomUser = new User("AKH", "Axel");
-        aRandomUser.myTaskboards.add(taskboardService.randomBoard());
-        return aRandomUser;
+    private List<User> userCache;
+
+    public UserService() {
+        userCache = new LinkedList<User>()
+    }
+
+    def getUser(String idstring) {
+        int id = Integer.parseInt(idstring)
+        for (def user : userCache) {
+            if (user.id == id) {
+                return user
+            }
+        }
+        return null // FIXME: OMG.
+    }
+
+    def createUser(String login, String name) {
+        User user = new User(login, name)
+        userCache.add(user)
+        return user
     }
 
     def list() {
-        List<User> randomUsers = new LinkedList<User>();
-        randomUsers.add(randomUser());
-        return randomUsers;
+        return userCache
     }
 }

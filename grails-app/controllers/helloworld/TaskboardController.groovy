@@ -1,19 +1,14 @@
 package helloworld
 
 class TaskboardController {
-    def taskService
     def taskboardService
-    def userService
 
     def index() {
-        def board = taskboardService.randomBoard()
-        def user = userService.randomUser()
+        [taskboard: taskboardService.list()]
+    }
 
-        for (task in taskService.list()) {
-            task.myOwner = user
-            board.myTasksPerColumn.get(0).add(task)
-        }
-
+    def show() {
+        def board = taskboardService.getBoard(params.id)
         [taskboard: board]
     }
 }

@@ -4,11 +4,12 @@ class UserController {
     def userService;
 
     def index() {
-        def aUser = userService.randomUser();
-        [user: aUser, taskboards: aUser.myTaskboards]
+        [users: userService.list()]
     }
 
     def show() {
-        [user: userService.randomUser()]
+        def curUser = userService.getUser(params.id)
+        def boards = curUser != null ? curUser.myTaskboards : null
+        [user: curUser, taskboards: boards]
     }
 }
