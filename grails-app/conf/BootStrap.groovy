@@ -1,6 +1,6 @@
 class BootStrap {
 
-    def taskService
+    def bootStrapService
     def taskboardService
     def userService
 
@@ -15,30 +15,19 @@ class BootStrap {
         fbr.myTaskboards.add(grailsBoard)
         fbr.myTaskboards.add(boringBoard)
 
-        List<String> grailsTasks = Arrays.asList(
-                "Setup environment",
-                "Create default app",
-                "Implement controllers",
-                "Implement data model",
-                "Write unit tests")
-
-        for (def taskName : grailsTasks) {
-            // "random" owner
-            def owner = taskName.length() % 2 ? akh : fbr
-            def task = taskService.createTask(taskName, owner)
-            // FIXME: add proper API for add to column
-            grailsBoard.myTasksPerColumn.get(0).add(task)
+        ["Setup environment",
+         "Create default app",
+         "Implement controllers",
+         "Implement data model",
+         "Write unit tests"
+        ].each {
+            bootStrapService.createTaskForRandomUserOnBoard(it, [akh,fbr], grailsBoard)
         }
 
-        List<String> boringTasks = Arrays.asList(
-                "Dumm schauen",
-                "Schlau daherreden")
-
-        for (def taskName : boringTasks) {
-            def owner = taskName.length() % 2 ? akh : fbr
-            def task = taskService.createTask(taskName, owner)
-            // FIXME: add proper API for add to column
-            boringBoard.myTasksPerColumn.get(0).add(task)
+        ["Dumm schauen",
+         "Schlau daherreden"
+        ].each {
+            bootStrapService.createTaskForRandomUserOnBoard(it, [akh,fbr], boringBoard)
         }
     }
 

@@ -25,4 +25,14 @@ public class Taskboard {
         }
         return result;
     }
+
+    public boolean addTaskToColumn(Task task, int col) {
+        List<Task> tasksInColumn = myTasksPerColumn.get(col);
+        if (tasksInColumn == null) {
+            return false; // TODO: proper error handling
+        }
+        tasksInColumn.add(task);
+        return true;
+    }
+
 }
