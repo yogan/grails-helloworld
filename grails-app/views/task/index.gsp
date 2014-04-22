@@ -6,7 +6,7 @@
             <li>
                 <b><g:link action="show" id="${task.id}">${task.myName}</g:link></b>
                 <g:if test="${task.myOwner != null}">
-                    by ${task.myOwner.myName}
+                    by <g:link controller="user" action="show" id="${task.myOwner.id}">${task.myOwner.myName}</g:link>
                 </g:if>
             </li>
         <%}%>
