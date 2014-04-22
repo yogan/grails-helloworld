@@ -13,8 +13,8 @@
                 <ul>
                 <g:each var="task" in="${column.getTasks()}">
                     <li>
-                    ${task.myName}
-                    (${task.myOwner.myName})
+                    <g:link controller="task" action="show" id="${task.id}">${task.myName}</g:link>
+                    (<g:link controller="user" action="show" id="${task.myOwner.id}">${task.myOwner.myLogin}</g:link>)
                     </li>
                 </g:each>
                 </ul>
