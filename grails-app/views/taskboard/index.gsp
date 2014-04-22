@@ -6,5 +6,5 @@
             <li><g:link action="show" id="${board.id}">${board.myName}</g:link></li>
         <%}%>
         </ul>
-   </body>
+    </body>
 </html>
