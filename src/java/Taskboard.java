@@ -1,38 +1,43 @@
 package helloworld;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.List;
-import java.util.LinkedList;
 
 public class Taskboard {
     private static int idCounter = 0;
 
     public final int id;
     public String myName;
-    public Map<Integer,String> myColumns = new HashMap<Integer,String>();
-    public Map<Integer,List<Task>> myTasksPerColumn = new HashMap<Integer,List<Task>>();
+
+    private Map<String,TaskboardColumn> myColumns;
 
     public Taskboard(String name) {
         id = idCounter++;
         myName = name;
+        myColumns = new HashMap<String,TaskboardColumn>();
     }
 
-    public List<String> columnNames() {
-        List<String> result = new LinkedList<String>(); 
-        for (Map.Entry<Integer, String> entry : myColumns.entrySet()) {
-            result.add(entry.getValue());
-        }
-        return result;
+    public void addColumn(String name) {
+        // TODO check existance
+        myColumns.put(name, new TaskboardColumn(name));
     }
 
-    public boolean addTaskToColumn(Task task, int col) {
-        List<Task> tasksInColumn = myTasksPerColumn.get(col);
-        if (tasksInColumn == null) {
+    public List<String> getColumnNames() {
+        return new ArrayList<String>(myColumns.keySet());
+    }
+
+    public List<TaskboardColumn> getColumns() {
+        return new ArrayList<TaskboardColumn>(myColumns.values());
+    }
+
+    public boolean addTaskToColumn(Task task, String columnName) {
+        TaskboardColumn column = myColumns.get(columnName);
+        if (column == null) {
             return false; // TODO: proper error handling
         }
-        tasksInColumn.add(task);
+        column.addTask(task);
         return true;
     }
-
 }

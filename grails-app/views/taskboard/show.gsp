@@ -1,12 +1,26 @@
 <html>
     <body>
-    <% taskboard.myColumns.each { aColumn -> %>
-        <table style="float:left">
-            <tr><th><%="${aColumn.value}" %></th></tr>
-        <% taskboard.myTasksPerColumn[aColumn.key].each { aTask -> %>
-            <tr><td><%="${aTask.myName} [${aTask.id}] (${aTask.myOwner.myName})" %></td></tr>
-        <%}%>
-         </table>
-   <%}%>
-   </body>
+    <h1>${taskboard.myName}</h1>
+    <table style="float:left" border="1">
+        <tr>
+        <g:each var="column" in="${columns}">
+            <th>${column.myName}</th>
+        </g:each>
+        </tr>
+        <tr>
+        <g:each var="column" in="${columns}">
+            <td valign="top">
+                <ul>
+                <g:each var="task" in="${column.getTasks()}">
+                    <li>
+                    ${task.myName}
+                    (${task.myOwner.myName})
+                    </li>
+                </g:each>
+                </ul>
+            </td>
+        </g:each>
+        </tr>
+    </table>
+    </body>
 </html>

@@ -4,11 +4,11 @@ class TaskboardController {
     def taskboardService
 
     def index() {
-        [taskboard: taskboardService.list()]
+        [taskboards: taskboardService.list()]
     }
 
     def show() {
         def board = taskboardService.getBoard(params.id)
-        [taskboard: board]
+        [taskboard: board, columns: board.getColumns()]
     }
 }

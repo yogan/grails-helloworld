@@ -6,7 +6,15 @@ class BootStrap {
 
     def init = { servletContext ->
         def grailsBoard = taskboardService.createBoard("Awesome Grails Project")
+        grailsBoard.addColumn("To Do");
+        grailsBoard.addColumn("In Work");
+        grailsBoard.addColumn("Done");
+
         def boringBoard = taskboardService.createBoard("Boring Things")
+        boringBoard.addColumn("Thinking About");
+        boringBoard.addColumn("Doing");
+        boringBoard.addColumn("Done");
+        boringBoard.addColumn("Will Never Do");
 
         def akh = userService.createUser("akh", "Axel")
         def fbr = userService.createUser("fbr", "Frank")

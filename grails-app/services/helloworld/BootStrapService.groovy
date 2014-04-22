@@ -6,10 +6,15 @@ class BootStrapService {
 
     def createTaskForRandomUserOnBoard(String taskname, List<User> users,
                                        Taskboard board) {
-            // "random", yay.
-            def owner = users[taskname.length() % users.size()]
-            def task = taskService.createTask(taskname, owner)
-            board.addTaskToColumn(task, 0)
+            // "random" owner, yay.
+            def randomOwner = users[taskname.length() % users.size()]
+
+            // random column, yay².
+            def columns = board.getColumnNames().toArray()
+            def randomColumn = columns[(int) (Math.random() * columns.length)]
+            
+            def task = taskService.createTask(taskname, randomOwner)
+            board.addTaskToColumn(task, randomColumn)
     }
 
 }
