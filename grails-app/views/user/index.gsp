@@ -1,20 +1,10 @@
 <html>
     <body>
-    <table>
-        <tr>
-            <th>Login</th>
-            <th>Name</th>
-        </tr>
+        <h2>Users</h2>
+        <ul>
         <% users.each { user -> %>
-        <tr>
-            <td>
-                <g:link action="show" id="${user.id}">${user.myLogin}</g:link>
-            </td>
-            <td>
-                ${user.myName}
-            </td>
-        </tr>
-        <% } %>
-    </table>
+            <li><g:link action="show" id="${user.id}">${user.myLogin} (${user.myName})</g:link></li>
+        <%}%>
+        </ul>
     </body>
 </html>
