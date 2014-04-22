@@ -1,18 +1,17 @@
 <html>
     <body>
-        <table>
-            <tr><th>User</th><th>Login</th></tr>
-            <% users.each { aUser -> %>
-            <tr><td>
-            <g:link action="show" id="${aUser.id}">${aUser.myLogin}</g:link>
-            </td></tr>
-            <%}%>
-        </table>
-        <table>
-            <tr><th>Taskboards</th></tr>
-            <% taskboards.each { taskboard -> %>
-            <tr><td><%="${taskboard.myName}" %></td></tr>
-            <%}%>
-        </table>
+        <h1>Awesome Admin Stuff</h1>
+        <h2>Available Users</h2>
+        <ul>
+        <% users.each { user -> %>
+            <li><g:link controller="user" action="show" id="${user.id}">${user.myLogin} (${user.myName})</g:link></li>
+        <%}%>
+        </ul>
+        <h2>Available Taskboards</h2>
+        <ul>
+        <% taskboards.each { board -> %>
+            <li><g:link controller="taskboard" action="show" id="${board.id}">${board.myName}</g:link></li>
+        <%}%>
+        </ul>
     </body>
 </html>
