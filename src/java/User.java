@@ -7,9 +7,9 @@ public class User {
     private static int idCounter = 0;
 
     public final int id;
-	public String myName;
-	public String myLogin;
-	public List<Taskboard> myTaskboards = new LinkedList<Taskboard>();
+    public String myName;
+    public String myLogin;
+    public List<Taskboard> myTaskboards = new LinkedList<Taskboard>();
 
     public User(String login) {
         this(login, login);

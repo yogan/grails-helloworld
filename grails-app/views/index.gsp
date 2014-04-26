@@ -5,7 +5,7 @@
     </head>
     <body>
         <h1>Grails Taskboard Thingy</h1>
-		<g:link controller="user" action="login">login</g:link>
+        <g:link controller="user" action="login">login</g:link>
         <h2>Available controllers</h2>
         <ul>
         <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
