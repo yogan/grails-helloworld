@@ -11,5 +11,7 @@
             </li>
         <%}%>
         </ul>
+        <hr/>
+        <g:link uri="/">home</g:link>
     </body>
 </html>

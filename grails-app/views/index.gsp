@@ -6,8 +6,8 @@
     <body>
         <h1>Grails Taskboard Thingy</h1>
         <g:if test='${session["user"]}'>
-            Logged in with id ${session["user"]}.
-            <g:link controller="user" action="logout">logout</g:link>
+            Logged in with id ${session["user"]}
+            (<g:link controller="user" action="logout">logout</g:link>)
         </g:if>
         <g:else>
             <g:link controller="user" action="login">login</g:link>

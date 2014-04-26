@@ -4,5 +4,7 @@
         <g:if test="${task.myOwner != null}">
             <p>by <g:link controller="user" action="show" id="${task.myOwner.id}">${task.myOwner.myName}</g:link></p>
         </g:if>
+        <hr/>
+        <g:link uri="/">home</g:link>
     </body>
 </html>
