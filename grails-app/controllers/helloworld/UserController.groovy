@@ -17,10 +17,15 @@ class UserController {
         if ( params.userlogin ) {
             for (def user : userService.list()) {
                 if (user.myLogin == params.userlogin) {
-                    session["user"] = user.id;
-                    redirect(action:"show", id:user.id);
+                    session["user"] = user.id
+                    redirect(action:"show", id:user.id)
                 }
             }
         }
+    }
+
+    def logout() {
+        session["user"] = null
+        redirect(uri:'/')
     }
 }
