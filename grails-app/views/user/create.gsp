@@ -7,8 +7,5 @@
             Password: <input type="text" size="4" name="password"></br>
             <input type="submit" Value="Create user">
         </form>
-        
-        <hr/>
-        <g:link uri="/">home</g:link>
     </body>
 </html>

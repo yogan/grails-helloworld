@@ -39,7 +39,5 @@
             </g:each>
             </tr>
         </table>
-        <hr/>
-        <g:link uri="/">home</g:link>
     </body>
 </html>

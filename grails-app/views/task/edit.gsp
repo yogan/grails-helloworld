@@ -17,7 +17,5 @@
                              value="${defaultUserId}"/>
             <g:submitButton name="save" value="Save" />
         </g:form>
-        <hr/>
-        <g:link uri="/">home</g:link>
     </body>
 </html>

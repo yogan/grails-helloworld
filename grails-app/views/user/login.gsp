@@ -6,7 +6,5 @@
             Password: <input type="password" size="4" name="password"></br>
             <input type="submit" Value="Login">
         </form>
-        <hr/>
-        <g:link uri="/">home</g:link>
     </body>
 </html>

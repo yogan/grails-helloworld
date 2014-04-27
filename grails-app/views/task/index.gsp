@@ -13,7 +13,5 @@
         <%}%>
         </ul>
         <p><g:link action="edit">new</g:link></p>
-        <hr/>
-        <g:link uri="/">home</g:link>
     </body>
 </html>

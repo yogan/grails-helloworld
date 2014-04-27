@@ -17,8 +17,5 @@
             Name: <input type="text" size="4" name="name"></br>
             <input type="submit" Value="Create">
         </form>
-        
-        <hr/>
-        <g:link uri="/">home</g:link>
     </body>
 </html>

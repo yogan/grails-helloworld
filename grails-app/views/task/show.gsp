@@ -6,7 +6,5 @@
         </g:if>
         <p><g:link action="edit" id="${task.id}">edit</g:link> |
            <g:link action="delete" id="${task.id}">delete</g:link></p>
-        <hr/>
-        <g:link uri="/">home</g:link>
     </body>
 </html>
