@@ -13,7 +13,10 @@ class UserService {
     }
 
     def getUser(String idstring) {
-        int id = Integer.parseInt(idstring)
+        return getUser(Integer.parseInt(idstring))
+    }
+
+    def getUser(int id) {
         for (def user : userCache) {
             if (user.id == id) {
                 return user
