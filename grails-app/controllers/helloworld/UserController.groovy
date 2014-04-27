@@ -4,7 +4,8 @@ import grails.transaction.*;
 
 class UserController {
     def userService;
-
+    def taskboardService;
+    
     def index() {
         [users: userService.list()]
     }
@@ -20,6 +21,13 @@ class UserController {
     
     def save() {
         def user = userService.createUser(params.userlogin,params.username,params.password);
+        redirect(action:"show", params:[id:user.id]);
+    }
+    
+    def unfollow() {
+        def user = userService.getUser(session.user);
+        def board = taskboardService.getBoard(params.id);
+        userService.unfollow(user,board);
         redirect(action:"show", params:[id:user.id]);
     }
     

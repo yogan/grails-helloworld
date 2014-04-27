@@ -37,6 +37,9 @@ class UserService {
         return null // FIXME: OMG.
     }
 
+    def unfollow(User user,Taskboard taskboard) {
+        user.myTaskboards.remove(taskboard);
+    }
     
     def createUser(String login, String name,String password) {
         User user = new User(login, name,password)

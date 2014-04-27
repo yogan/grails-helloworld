@@ -7,7 +7,7 @@
             </th></tr>
             <% taskboards.each { board -> %>
             <tr><td>
-                <g:link controller="taskboard" action="show" id="${board.id}">${board.myName}</g:link>
+                <g:link controller="taskboard" action="show" id="${board.id}">${board.myName}</g:link> <g:link controller="user" action="unfollow" id="${board.id}">unfollow</g:link> <g:link controller="taskboard" action="delete" id="${board.id}">delete</g:link> 
             </td></tr>
             <% } %>
         </table>

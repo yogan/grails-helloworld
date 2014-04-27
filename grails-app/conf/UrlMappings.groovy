@@ -9,6 +9,7 @@ class UrlMappings {
 
         "/user/login"(controller:'user',action:'login')
         "/user/logout"(controller:'user',action:'logout')
+        "/user/unfollow"(controller:'user',action:'unfollow')
         "/user"(resources:'user')
 
         "/taskboard"(resources:'taskboard')
