@@ -16,8 +16,8 @@ class BootStrap {
         boringBoard.addColumn("Done");
         boringBoard.addColumn("Will Never Do");
 
-        def akh = userService.createUser("akh", "Axel")
-        def fbr = userService.createUser("fbr", "Frank")
+        def akh = userService.createUser("akh", "Axel","")
+        def fbr = userService.createUser("fbr", "Frank","z§tPPq@1")
 
         akh.myTaskboards.add(grailsBoard)
         fbr.myTaskboards.add(grailsBoard)

@@ -17,11 +17,15 @@ class UserService {
     }
 
     def updateName(User aUser,String newName) {
-        user.myName = newName;
+        aUser.myName = newName;
     }
     
     def updateLogin(User aUser,String newLogin) {
-        user.myName = newLogin;
+        aUser.myName = newLogin;
+    }
+    
+    def updatePassword(User aUser,String newPassword) {
+        aUser.myPassword = newPassword;
     }
     
     def getUser(int id) {
@@ -33,8 +37,9 @@ class UserService {
         return null // FIXME: OMG.
     }
 
-    def createUser(String login, String name) {
-        User user = new User(login, name)
+    
+    def createUser(String login, String name,String password) {
+        User user = new User(login, name,password)
         userCache.add(user)
         return user
     }

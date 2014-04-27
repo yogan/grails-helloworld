@@ -19,7 +19,7 @@ class UserController {
     }
     
     def save() {
-        def user = userService.createUser(params.userlogin,params.username);
+        def user = userService.createUser(params.userlogin,params.username,params.password);
         redirect(action:"show", params:[id:user.id]);
     }
     
@@ -31,6 +31,9 @@ class UserController {
         }
         if ( params.username ) {
             userService.updateName(user,params.username);
+        }
+        if ( params.password ) {
+            userService.updatePassword(user,params.password);
         }
         redirect(action:"show",params:[id:params.id]);
     }
@@ -48,7 +51,7 @@ class UserController {
     def login() {
         if ( params.userlogin ) {
             for (def user : userService.list()) {
-                if (user.myLogin == params.userlogin) {
+                if (user.myLogin == params.userlogin && user.authenticate(params.password)) {
                     session.user = user.id
                     redirect(action:"show", id:user.id)
                 }
