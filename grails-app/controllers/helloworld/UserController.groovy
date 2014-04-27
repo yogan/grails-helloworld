@@ -13,13 +13,18 @@ class UserController {
         [user: curUser, taskboards: boards]
     }
 
-    // TODO: create ->html form
-    // TODO: save
+    def create() {
+    }
+    
+    def save() {
+        def user = userService.createUser(params.userlogin,params.username);
+        redirect(action:"show", params:[id:user.id]);
+    }
+    
     // TODO: edit -> html form
     // TODO: update
     
     def delete() {
-        log.error("deleting with " + params);
         def user = userService.getUser(params.id);
         if ( user ) {
             userService.delete(user);
