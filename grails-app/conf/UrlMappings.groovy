@@ -7,6 +7,7 @@ class UrlMappings {
             }
         }
 
+		"/user/login"(controller:'user',action:'login')
 		"/user"(resources:'user')
 		
 		
