@@ -8,7 +8,11 @@ public class Task {
     public User myOwner;
 
     public Task (String name) {
-        id = idCounter++;
+        this(idCounter++, name);
+    }
+
+    public Task (int id, String name) {
+        this.id = id;
         myName = name;
     }
 }
