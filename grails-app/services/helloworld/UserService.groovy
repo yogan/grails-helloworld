@@ -16,6 +16,14 @@ class UserService {
         return getUser(Integer.parseInt(idstring))
     }
 
+    def updateName(User aUser,String newName) {
+        user.myName = newName;
+    }
+    
+    def updateLogin(User aUser,String newLogin) {
+        user.myName = newLogin;
+    }
+    
     def getUser(int id) {
         for (def user : userCache) {
             if (user.id == id) {

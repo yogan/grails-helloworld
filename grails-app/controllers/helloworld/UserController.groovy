@@ -1,5 +1,7 @@
 package helloworld
 
+import grails.transaction.*;
+
 class UserController {
     def userService;
 
@@ -21,8 +23,17 @@ class UserController {
         redirect(action:"show", params:[id:user.id]);
     }
     
-    // TODO: edit -> html form
-    // TODO: update
+    @Transactional
+    def update() {
+        def user = userService.getUser(params.id);
+        if ( params.userlogin ) {
+            userService.updateLogin(user,params.userlogin);
+        }
+        if ( params.username ) {
+            userService.updateName(user,params.username);
+        }
+        redirect(action:"show",params:[id:params.id]);
+    }
     
     def delete() {
         def user = userService.getUser(params.id);
@@ -38,7 +49,7 @@ class UserController {
         if ( params.userlogin ) {
             for (def user : userService.list()) {
                 if (user.myLogin == params.userlogin) {
-                    session["user"] = user.id
+                    session.user = user.id
                     redirect(action:"show", id:user.id)
                 }
             }
