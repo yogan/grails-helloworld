@@ -11,6 +11,7 @@ class UrlMappings {
         "/user/logout"(controller:'user',action:'logout')
         "/user"(resources:'user')
 
+        "/taskboard"(resources:'taskboard')
 
         "/"(view:"/index")
         "500"(view:'/error')

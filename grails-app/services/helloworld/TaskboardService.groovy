@@ -21,9 +21,10 @@ class TaskboardService {
         return null // FIXME: OMG.
     }
 
-    def createBoard(String name) {
+    def createBoard(String name,User user) {
         def board = new Taskboard(name)
         boardCache.add(board)
+        user.myTaskboards.add(board);
         return board
     }
 }
