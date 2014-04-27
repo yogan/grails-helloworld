@@ -13,6 +13,22 @@ class UserController {
         [user: curUser, taskboards: boards]
     }
 
+    // TODO: create ->html form
+    // TODO: save
+    // TODO: edit -> html form
+    // TODO: update
+    
+    def delete() {
+        log.error("deleting with " + params);
+        def user = userService.getUser(params.id);
+        if ( user ) {
+            userService.delete(user);
+            redirect action:"index", method:"GET"
+        } else {
+            render status: UNPROCESSABLE_ENTITY
+        }
+    }
+    
     def login() {
         if ( params.userlogin ) {
             for (def user : userService.list()) {

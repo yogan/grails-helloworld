@@ -34,4 +34,8 @@ class UserService {
     def list() {
         return userCache
     }
+    
+    def delete(User user) {
+        userCache.remove(user);
+    }
 }
