@@ -8,6 +8,7 @@
                 <g:if test="${task.myOwner != null}">
                     by <g:link controller="user" action="show" id="${task.myOwner.id}">${task.myOwner.myName}</g:link>
                 </g:if>
+                <g:link action="delete" id="${task.id}">delete</g:link>
             </li>
         <%}%>
         </ul>

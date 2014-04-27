@@ -12,6 +12,13 @@ class TaskController {
         [task: taskService.getTask(params.id)]
     }
 
+    def delete() {
+        if (params.id) {
+            [task: taskService.deleteTask(params.id)]
+        }
+        redirect(action:"index")
+    }
+
     def edit() {
         if (params.id) {
             [task: taskService.getTask(params.id)]

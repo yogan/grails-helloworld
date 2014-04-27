@@ -27,4 +27,11 @@ class TaskService {
         taskCache.add(task)
         return task
     }
+
+    def deleteTask(String idstring) {
+        def task = getTask(idstring)
+        if (task != null) {
+            taskCache.remove(task)
+        }
+    }
 }
