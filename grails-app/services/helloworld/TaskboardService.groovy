@@ -4,7 +4,8 @@ import grails.transaction.Transactional
 
 @Transactional
 class TaskboardService {
-
+    def userService
+    
     private List<Taskboard> boardCache = new LinkedList<Taskboard>()
 
     def list() {
@@ -26,5 +27,12 @@ class TaskboardService {
         boardCache.add(board)
         user.myTaskboards.add(board);
         return board
+    }
+    
+    def deleteBoard(Taskboard taskboard) {
+        boardCache.remove(taskboard)
+        for (def user : userService.list()) {
+            user.myTaskboards.remove(taskboard);
+        }
     }
 }

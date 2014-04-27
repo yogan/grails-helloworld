@@ -18,4 +18,10 @@ class TaskboardController {
         def board = taskboardService.createBoard(params.name,curUser);
         redirect(action:"show", params:[id:board.id]);
     }
+    
+    def delete() {
+        def board = taskboardService.getBoard(params.id)
+        taskboardService.deleteBoard(board);
+        redirect(action:"index");
+    }
 }
