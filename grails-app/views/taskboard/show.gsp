@@ -17,7 +17,11 @@
         <table>
             <tr>
             <g:each var="column" in="${columns}">
-                <th>${column.myName}</th>
+                <th>${column.myName}
+                <g:if test="${column.limit > 0}">
+                (${column.getTasks().size()}/${column.limit})
+                </g:if>
+                </th>
             </g:each>
             </tr>
             <tr>

@@ -6,13 +6,13 @@ class BootStrap {
 
     def init = { servletContext ->
         def grailsBoard = taskboardService.createBoard("Awesome Grails Project")
-        grailsBoard.addColumn("To Do");
-        grailsBoard.addColumn("In Work");
+        grailsBoard.addColumn("To Do", 20);
+        grailsBoard.addColumn("In Work", 7);
         grailsBoard.addColumn("Done");
 
         def boringBoard = taskboardService.createBoard("Boring Things")
-        boringBoard.addColumn("Thinking About");
-        boringBoard.addColumn("Doing");
+        boringBoard.addColumn("Thinking About", 10);
+        boringBoard.addColumn("Doing", 3);
         boringBoard.addColumn("Done");
         boringBoard.addColumn("Will Never Do");
 

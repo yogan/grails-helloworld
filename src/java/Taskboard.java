@@ -19,9 +19,16 @@ public class Taskboard {
         myColumns = new HashMap<String,TaskboardColumn>();
     }
 
-    public void addColumn(String name) {
+    public TaskboardColumn addColumn(String name) {
         // TODO check existance
-        myColumns.put(name, new TaskboardColumn(name));
+        TaskboardColumn column = new TaskboardColumn(name);
+        myColumns.put(name, column);
+        return column;
+    }
+
+    public void addColumn(String name, int limit) {
+        TaskboardColumn column = addColumn(name);
+        column.limit = limit;
     }
 
     public List<String> getColumnNames() {

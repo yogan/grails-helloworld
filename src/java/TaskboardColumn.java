@@ -6,12 +6,14 @@ import java.util.LinkedList;
 public class TaskboardColumn {
 
     public String myName;
+    public int limit;
 
     private List<Task> myTasks;
 
     public TaskboardColumn(String name) {
         myName = name;
         myTasks = new LinkedList<Task>();
+        limit = 0;
     }
 
     public void addTask(Task task) {
