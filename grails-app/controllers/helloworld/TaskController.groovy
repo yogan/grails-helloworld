@@ -20,18 +20,28 @@ class TaskController {
     }
 
     def edit() {
+        def task = null
+        def userid = session["user"]
         if (params.id) {
-            [task: taskService.getTask(params.id)]
+            task = taskService.getTask(params.id)
+            userid = task.myOwner.id
         }
+        [task: task, users: userService.list(), defaultUserId: userid]
     }
 
     def save() {
+        // TODO error handling
         if (params.id) {
+            // edit
             def task = taskService.getTask(params.id)
             task.myName = params.name
+            if (task.myOwner.id != params.owner) {
+                def user = userService.getUser(params.owner)
+                task.myOwner = user
+            }
         } else {
-            // TODO error handling
-            def user = userService.getUser(session["user"])
+            // new
+            def user = userService.getUser(params.owner)
             taskService.createTask(params.name, user)
         }
         redirect(action:"index")
