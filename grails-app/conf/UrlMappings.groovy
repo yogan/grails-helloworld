@@ -7,10 +7,11 @@ class UrlMappings {
             }
         }
 
-		"/user/login"(controller:'user',action:'login')
-		"/user"(resources:'user')
-		
-		
+        "/user/login"(controller:'user',action:'login')
+        "/user/logout"(controller:'user',action:'logout')
+        "/user"(resources:'user')
+
+
         "/"(view:"/index")
         "500"(view:'/error')
     }
