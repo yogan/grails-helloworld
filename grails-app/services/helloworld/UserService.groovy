@@ -37,6 +37,10 @@ class UserService {
         return null // FIXME: OMG.
     }
 
+    def follow(User user,Taskboard taskboard) {
+        user.myTaskboards.add(taskboard);
+    }
+    
     def unfollow(User user,Taskboard taskboard) {
         user.myTaskboards.remove(taskboard);
     }

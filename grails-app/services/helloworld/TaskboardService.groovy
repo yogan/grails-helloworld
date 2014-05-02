@@ -25,7 +25,7 @@ class TaskboardService {
     def createBoard(String name,User user) {
         def board = new Taskboard(name)
         boardCache.add(board)
-        user.myTaskboards.add(board);
+        userService.follow(user,board);
         return board
     }
     
