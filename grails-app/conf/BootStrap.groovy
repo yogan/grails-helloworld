@@ -20,6 +20,12 @@ class BootStrap {
         boringBoard.addColumn("Done");
         boringBoard.addColumn("Will Never Do");
 
+        
+        def unusedBoard = taskboardService.createBoard("Dead Board",akh)
+        unusedBoard.addColumn("Couldn't care less", 10);
+        userService.unfollow(akh,unusedBoard);
+        
+        
         ["Setup environment",
          "Create default app",
          "Implement controllers",
