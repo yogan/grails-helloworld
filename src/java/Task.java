@@ -1,18 +1,15 @@
 package helloworld;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tasks")
 public class Task {
-    private static int idCounter = 0;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    public final int id;
-    public String myName;
-    public User myOwner;
-
-    public Task (String name) {
-        this(idCounter++, name);
-    }
-
-    public Task (int id, String name) {
-        this.id = id;
-        myName = name;
-    }
+    private String myName;
+    public String getMyName() { return myName; }
+    public void setMyName(String value) { myName = value; }
 }

@@ -10,6 +10,7 @@ public class User {
     public String myName;
     public String myLogin;
     public String myPassword;
+    public List<Task> myTasks = new LinkedList<Task>();
     public List<Taskboard> myTaskboards = new LinkedList<Taskboard>();
 
     public User(String login) {

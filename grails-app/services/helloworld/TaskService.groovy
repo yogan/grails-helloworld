@@ -5,33 +5,38 @@ import grails.transaction.Transactional
 @Transactional
 class TaskService {
 
-    private List<Task> taskCache = new LinkedList<Task>()
+    def userService
 
     def list() {
-        return taskCache
+        return Task.getAll()
     }
 
     def getTask(String idstring) {
         int id = Integer.parseInt(idstring)
-        for (def task : taskCache) {
-            if (task.id == id) {
-                return task
-            }
-        }
-        return null // FIXME: OMG.
+        return Task.get(id)
     }
 
     def createTask(String title, User owner) {
-        def task = new Task(title)
-        task.myOwner = owner
-        taskCache.add(task)
+        def task = new Task()
+        task.setMyName(title)
+        task.save()
+        owner.myTasks.add(task)
         return task
     }
 
     def deleteTask(String idstring) {
         def task = getTask(idstring)
-        if (task != null) {
-            taskCache.remove(task)
+        task.delete()
+    }
+
+    def getUserOfTask(Task task) {
+        // FIXME: this seems broken
+        def allUsers = userService.list()
+        for (def user : allUsers) {
+            if (user.myTasks.contains(task)) {
+                return user
+            }
         }
+        return null
     }
 }
