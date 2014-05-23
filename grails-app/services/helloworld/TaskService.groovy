@@ -16,11 +16,11 @@ class TaskService {
         return Task.get(id)
     }
 
-    def createTask(String title, User owner) {
+    def createTask(String title, User user) {
         def task = new Task()
         task.setMyName(title)
         task.save()
-        owner.myTasks.add(task)
+        user.myTasks.add(task)
         return task
     }
 

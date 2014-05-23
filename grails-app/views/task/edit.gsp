@@ -10,7 +10,7 @@
         </h1>
         <g:form name="addForm" action="save" id="${task?.id}">
             Title: <g:textField name="name" value="${task?.myName}"/><br/>
-            Owner: <g:select name="owner"
+            Owner: <g:select name="user"
                              from="${users}"
                              optionKey="id"
                              optionValue="myName"

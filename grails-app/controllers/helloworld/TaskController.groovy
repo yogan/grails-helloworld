@@ -5,13 +5,13 @@ class TaskController {
     def userService
 
     def index() {
-        [tasks: taskService.list()]
+        [tasks: taskService.list(), taskService: taskService]
     }
 
     def show() {
         def task = taskService.getTask(params.id)
-        def owner = taskService.getUserOfTask(task.id)
-        [task: task, user: owner]
+        def user = taskService.getUserOfTask(task.id)
+        [task: task, user: user]
     }
 
     def delete() {
@@ -38,14 +38,15 @@ class TaskController {
             def task = taskService.getTask(params.id)
             task.myName = params.name
             def currentOwnerOfTask = taskService.getUserOfTask(task.id)
-            if (currentOwnerOfTask.id != params.owner) {
-                def user = userService.getUser(params.owner)
-                user.myTasks.Add(task)
-                currentOwnerOfTask.myTasks.Remove(task)
+            if (currentOwnerOfTask.id != params.user) {
+                // FIXME: seems broken
+                def user = userService.getUser(params.user)
+                user.myTasks.add(task)
+                currentOwnerOfTask.myTasks.remove(task)
             }
         } else {
             // new
-            def user = userService.getUser(params.owner)
+            def user = userService.getUser(params.user)
             taskService.createTask(params.name, user)
         }
         redirect(action:"index")
