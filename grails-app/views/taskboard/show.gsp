@@ -31,7 +31,10 @@
                     <g:each var="task" in="${column.getTasks()}">
                         <li>
                         <g:link controller="task" action="show" id="${task.id}">${task.myName}</g:link>
-                        (TODO: user)
+                        <% user = taskService.getUserOfTask(task.id) %>
+                        <g:if test="${user != null}">
+                            (<g:link controller="user" action="show" id="${user.id}">${user.myName}</g:link>)
+                        </g:if>
                         </li>
                     </g:each>
                     </ul>

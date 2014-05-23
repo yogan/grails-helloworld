@@ -2,6 +2,7 @@ package helloworld
 
 class TaskboardController {
     def taskboardService
+    def taskService
     def userService
     
     def index() {
@@ -10,7 +11,7 @@ class TaskboardController {
 
     def show() {
         def board = taskboardService.getBoard(params.id)
-        [taskboard: board, columns: board.getColumns()]
+        [taskboard: board, columns: board.getColumns(), taskService: taskService]
     }
     
     def save() {
