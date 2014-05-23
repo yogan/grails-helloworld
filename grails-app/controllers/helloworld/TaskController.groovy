@@ -9,7 +9,9 @@ class TaskController {
     }
 
     def show() {
-        [task: taskService.getTask(params.id)]
+        def task = taskService.getTask(params.id)
+        def owner = taskService.getUserOfTask(task.id)
+        [task: task, user: owner]
     }
 
     def delete() {
@@ -24,7 +26,7 @@ class TaskController {
         def userid = session["user"]
         if (params.id) {
             task = taskService.getTask(params.id)
-            userid = taskService.getUserOfTask(task)?.id
+            userid = taskService.getUserOfTask(task.id)?.id
         }
         [task: task, users: userService.list(), defaultUserId: userid]
     }
@@ -35,7 +37,7 @@ class TaskController {
             // edit
             def task = taskService.getTask(params.id)
             task.myName = params.name
-            def currentOwnerOfTask = taskService.getUserOfTask(task)
+            def currentOwnerOfTask = taskService.getUserOfTask(task.id)
             if (currentOwnerOfTask.id != params.owner) {
                 def user = userService.getUser(params.owner)
                 user.myTasks.Add(task)

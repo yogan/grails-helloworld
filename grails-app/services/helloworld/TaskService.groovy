@@ -29,12 +29,13 @@ class TaskService {
         task.delete()
     }
 
-    def getUserOfTask(Task task) {
-        // FIXME: this seems broken
+    def getUserOfTask(Long taskId) {
         def allUsers = userService.list()
-        for (def user : allUsers) {
-            if (user.myTasks.contains(task)) {
-                return user
+        for (User user : allUsers) {
+            for (def task : user.myTasks) {
+                if (task.id == taskId) {
+                    return user
+                }
             }
         }
         return null
