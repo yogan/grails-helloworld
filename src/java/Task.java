@@ -5,11 +5,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tasks")
 public class Task {
+    private Long id;
+    private String myName;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    public Long getId()           { return id; }
+    public void setId(Long value) { id = value; }
 
-    private String myName;
-    public String getMyName() { return myName; }
+    public String getMyName()           { return myName; }
     public void setMyName(String value) { myName = value; }
 }
