@@ -13,7 +13,7 @@ public class Taskboard {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    public String myName;
+    private String myName;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name="name_column")
@@ -28,7 +28,11 @@ public class Taskboard {
     }
 
     public Long getId()           { return id; }
-    public void setId(Long value) { id = value; }
+    public void setId(Long value) { id = value; } 
+    
+    public String getName()           { return myName; }
+    public void setName(String value) { myName = value; }
+    
     
     public TaskboardColumn addColumn(String name) {
         // TODO check existence

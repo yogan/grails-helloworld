@@ -13,7 +13,7 @@
         </style>
     </head>
     <body>
-        <h1>${taskboard.myName}</h1>
+        <h1>${taskboard.name}</h1>
         <table>
             <tr>
             <g:each var="column" in="${columns}">
