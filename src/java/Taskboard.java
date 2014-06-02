@@ -20,7 +20,7 @@ public class Taskboard {
     }
 
     public TaskboardColumn addColumn(String name) {
-        // TODO check existance
+        // TODO check existence
         TaskboardColumn column = new TaskboardColumn(name);
         myColumns.put(name, column);
         return column;
@@ -28,7 +28,7 @@ public class Taskboard {
 
     public void addColumn(String name, int limit) {
         TaskboardColumn column = addColumn(name);
-        column.limit = limit;
+        column.setLimit(limit);
     }
 
     public List<String> getColumnNames() {
