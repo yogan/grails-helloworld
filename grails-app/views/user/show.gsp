@@ -1,9 +1,9 @@
 <html>
     <body>
-        <h1>${user.myName}</h1>
+        <h1>${user.name}</h1>
         <table>
             <tr><th>
-                ${user.myLogin}'s Taskboards
+                ${user.login}'s Taskboards
             </th></tr>
             <% taskboards.each { board -> %>
             <tr><td>

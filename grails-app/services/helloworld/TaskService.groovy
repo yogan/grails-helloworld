@@ -18,9 +18,10 @@ class TaskService {
 
     def createTask(String title, User user) {
         def task = new Task()
-        task.setMyName(title)
+        task.setName(title)
         task.save()
-        user.myTasks.add(task)
+        user.tasks.add(task)
+        user.save()
         return task
     }
 
@@ -32,7 +33,7 @@ class TaskService {
     def getUserOfTask(Long taskId) {
         def allUsers = userService.list()
         for (User user : allUsers) {
-            for (def task : user.myTasks) {
+            for (def task : user.tasks) {
                 if (task.id == taskId) {
                     return user
                 }

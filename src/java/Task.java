@@ -13,6 +13,6 @@ public class Task {
     public Long getId()           { return id; }
     public void setId(Long value) { id = value; }
 
-    public String getMyName()           { return myName; }
-    public void setMyName(String value) { myName = value; }
+    public String getName()           { return myName; }
+    public void setName(String value) { myName = value; }
 }

@@ -12,7 +12,7 @@ class UserController {
 
     def show() {
         def curUser = userService.getUser(params.id)
-        def boards = curUser != null ? curUser.myTaskboards : null
+        def boards = curUser != null ? curUser.getTaskboards() : null
         [user: curUser, taskboards: boards]
     }
 
@@ -21,14 +21,14 @@ class UserController {
     
     def save() {
         def user = userService.createUser(params.userlogin,params.username,params.password);
-        redirect(action:"show", params:[id:user.id]);
+        redirect(action:"show", params:[id:user.getId()]);
     }
     
     def unfollow() {
         def user = userService.getUser(session.user);
         def board = taskboardService.getBoard(params.id);
         userService.unfollow(user,board);
-        redirect(action:"show", params:[id:user.id]);
+        redirect(action:"show", params:[id:user.getId()]);
     }
     
     @Transactional
@@ -59,9 +59,9 @@ class UserController {
     def login() {
         if ( params.userlogin ) {
             for (def user : userService.list()) {
-                if (user.myLogin == params.userlogin && user.authenticate(params.password)) {
-                    session.user = user.id
-                    redirect(action:"show", id:user.id)
+                if (user.getLogin().equals(params.userlogin) && user.authenticate(params.password)) {
+                    session.user = user.getId()
+                    redirect(action:"show", id:user.getId())
                 }
             }
         }

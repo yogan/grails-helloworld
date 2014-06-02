@@ -6,56 +6,52 @@ import grails.transaction.Transactional
 class UserService {
     def taskboardService
 
-    private List<User> userCache;
-
-    public UserService() {
-        userCache = new LinkedList<User>()
-    }
 
     def getUser(String idstring) {
         return getUser(Integer.parseInt(idstring))
     }
-
+    
+    def getUser(int id) {
+        return User.findById(id);
+    }
+    
     def updateName(User aUser,String newName) {
-        aUser.myName = newName;
+        aUser.setName(newName);
+        aUser.save();
     }
     
     def updateLogin(User aUser,String newLogin) {
-        aUser.myName = newLogin;
+        aUser.setLogin(newLogin);
+        aUser.save();
     }
     
     def updatePassword(User aUser,String newPassword) {
-        aUser.myPassword = newPassword;
+        aUser.setPassword(newPassword);
+        aUser.save();
     }
-    
-    def getUser(int id) {
-        for (def user : userCache) {
-            if (user.id == id) {
-                return user
-            }
-        }
-        return null // FIXME: OMG.
-    }
+
 
     def follow(User user,Taskboard taskboard) {
         user.myTaskboards.add(taskboard);
+        user.save()
     }
     
     def unfollow(User user,Taskboard taskboard) {
         user.myTaskboards.remove(taskboard);
+        user.save()
     }
     
     def createUser(String login, String name,String password) {
         User user = new User(login, name,password)
-        userCache.add(user)
+        user.save()
         return user
     }
 
     def list() {
-        return userCache
+        return User.list();
     }
     
     def delete(User user) {
-        userCache.remove(user);
+        user.delete();
     }
 }

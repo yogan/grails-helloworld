@@ -9,6 +9,7 @@
 		<mapping class="helloworld.Task"/>
 		<mapping class="helloworld.Taskboard"/>
 		<mapping class="helloworld.TaskboardColumn"/>
+		<mapping class="helloworld.User"/>
 	</session-factory>
 
 </hibernate-configuration>
