@@ -62,15 +62,15 @@ grails.project.dependency.resolution = {
         build ":tomcat:7.0.52.1"
 
         // plugins for the compile step
-        compile ":scaffolding:2.0.3"
-        compile ':cache:1.1.1'
-        compile ":hibernate4:4.3.5.1"
+        compile ":scaffolding:2.1.0"
+        compile ':cache:1.1.3'
+        compile ':asset-pipeline:1.8.3'
+        compile ":hibernate4:4.3.5.2"
         
         // plugins needed at runtime but not for compilation
-        runtime ":hibernate4:4.3.5.1"
+        runtime ":hibernate4:4.3.5.2"
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.0.2"
-        runtime ":resources:1.2.7"
         
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
