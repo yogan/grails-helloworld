@@ -4,21 +4,32 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "taskboard")
 public class Taskboard {
-    private static int idCounter = 0;
-
-    public final int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
     public String myName;
 
-    private Map<String,TaskboardColumn> myColumns;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="name_column")
+    @MapKeyColumn(name="name")
+    private Map<String,TaskboardColumn> myColumns = new HashMap<String,TaskboardColumn>();
 
     public Taskboard(String name) {
-        id = idCounter++;
         myName = name;
-        myColumns = new HashMap<String,TaskboardColumn>();
     }
 
+    public Taskboard() {
+    }
+
+    public Long getId()           { return id; }
+    public void setId(Long value) { id = value; }
+    
     public TaskboardColumn addColumn(String name) {
         // TODO check existence
         TaskboardColumn column = new TaskboardColumn(name);
