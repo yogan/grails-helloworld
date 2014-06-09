@@ -1,6 +1,5 @@
 <head>
     <asset:javascript src="application.js"/>
-    <asset:stylesheet src="dummy.css"/>
 </head>
 <body>
     <h1>Tasks</h1>
