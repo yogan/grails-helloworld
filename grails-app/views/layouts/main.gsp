@@ -32,10 +32,23 @@
             </div>
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                <li><g:link controller="task">Tasks</g:link></li>
-                <li><g:link controller="taskboard">Taskboards</g:link></li>
-                <li><g:link controller="user">User</g:link></li>
-                <li><g:link controller="admin">Admin</g:link></li>
+                %{-- TODO: use a custom taglib for this - DRY! --}%
+                <g:if test="${controllerName == 'task'}"><li class="active"></g:if>
+                <g:else><li></g:else>
+                    <g:link controller="task">Tasks</g:link>
+                </li>
+                <g:if test="${controllerName == 'taskboard'}"><li class="active"></g:if>
+                <g:else><li></g:else>
+                    <g:link controller="taskboard">Taskboards</g:link>
+                </li>
+                <g:if test="${controllerName == 'user'}"><li class="active"></g:if>
+                <g:else><li></g:else>
+                    <g:link controller="user">User</g:link>
+                </li>
+                <g:if test="${controllerName == 'admin'}"><li class="active"></g:if>
+                <g:else><li></g:else>
+                    <g:link controller="admin">Admin</g:link>
+                </li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
