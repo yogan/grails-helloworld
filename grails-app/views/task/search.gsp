@@ -7,7 +7,7 @@
 <br/>
 
 <g:if test="${matches.size == 0}">
-    <g:if test="${searchString.length() > 0}">
+    <g:if test="${searchString != null && searchString.length() > 0}">
         <p>No results found.</p>
     </g:if>
 </g:if>
