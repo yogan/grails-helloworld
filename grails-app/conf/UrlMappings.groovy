@@ -14,7 +14,8 @@ class UrlMappings {
 
         "/taskboard"(resources:'taskboard')
 
-        "/task/search"(controller:'task',action:'search')
+        "/task/search"     (controller:'task', action:'search')
+        "/task/search.json"(controller:'task', action:'searchJSON')
 
         "/"(view:"/index")
         "500"(view:'/error')

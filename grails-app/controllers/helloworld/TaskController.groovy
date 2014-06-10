@@ -1,5 +1,7 @@
 package helloworld
 
+import grails.converters.*
+
 class TaskController {
     def taskService
     def userService
@@ -14,6 +16,14 @@ class TaskController {
             matches = Task.findAllByNameIlike("%" + params.taskName + "%")
         }
         [searchString: params.taskName, matches: matches]
+    }
+
+    def searchJSON() {
+        def matches = []
+        if (params.q) {
+            matches = Task.findAllByNameIlike("%" + params.q + "%")
+        }
+        render matches as JSON
     }
 
     def show() {
