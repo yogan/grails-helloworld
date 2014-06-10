@@ -14,6 +14,8 @@ class UrlMappings {
 
         "/taskboard"(resources:'taskboard')
 
+        "/task/search"(controller:'task',action:'search')
+
         "/"(view:"/index")
         "500"(view:'/error')
     }

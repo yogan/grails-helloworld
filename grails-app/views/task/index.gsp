@@ -12,3 +12,4 @@
 <%}%>
 </ul>
 <p><g:link action="edit">new</g:link></p>
+<p><g:link action="search">search</g:link></p>

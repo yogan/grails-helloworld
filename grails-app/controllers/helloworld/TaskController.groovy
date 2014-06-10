@@ -8,6 +8,14 @@ class TaskController {
         [tasks: taskService.list(), taskService: taskService]
     }
 
+    def search() {
+        def matches = []
+        if (params.taskName) {
+            matches = Task.findAllByNameIlike("%" + params.taskName + "%")
+        }
+        [searchString: params.taskName, matches: matches]
+    }
+
     def show() {
         def task = taskService.getTask(params.id)
         def user = taskService.getUserOfTask(task.id)
