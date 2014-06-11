@@ -6,7 +6,7 @@
     <h1>Task Search</h1>
 
     <g:form action="search">
-        <g:textField name="taskName" value="${searchString}"/>
+        <g:textField name="taskName" value="${searchString}" autocomplete="off" />
     </g:form>
 
     <br/>
