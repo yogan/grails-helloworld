@@ -1,14 +1,18 @@
 <head>
+    <asset:javascript src="taskboard.js"/>
 </head>
 <body>
     <h1>${taskboard.name}</h1>
+    <p><a href="#" class="toggleLimit">show/hide column limits</a></p>
     <table>
         <tr>
         <g:each var="column" in="${columns}">
             <th>${column.name}
-            <g:if test="${column.limit > 0}">
-            (${column.getTasks().size()}/${column.limit})
-            </g:if>
+                <span class="columnLimit">
+                    <g:if test="${column.limit > 0}">
+                    (${column.getTasks().size()}/${column.limit})
+                    </g:if>
+                </span>
             </th>
         </g:each>
         </tr>
